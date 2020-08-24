@@ -1,0 +1,38 @@
+{
+  "pages":[
+    "pages/films/films",
+    "pages/video/video",
+    "pages/shortVideo/shortVideo",
+    "pages/logs/logs"
+  ],
+  "tabBar": {
+    "list": [
+        {
+        "pagePath": "pages/films/films",
+        "text": "电影/影院",
+        "iconPath": "static/icon/films.jpg",
+        "selectedIconPath": "static/icon/films1.jpg"
+      },
+      {
+        "pagePath": "pages/video/video",
+        "text": "视频",
+        "iconPath": "static/icon/video.jpg",
+        "selectedIconPath": "static/icon/video1.jpg"
+      },
+      {
+        "pagePath": "pages/shortVideo/shortVideo",
+        "text": "小视频",
+        "iconPath": "static/icon/shortvideo.jpg",
+        "selectedIconPath": "static/icon/shortvideo1.jpg"
+      }
+    ]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#e54847",
+    "navigationBarTitleText": "电影",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

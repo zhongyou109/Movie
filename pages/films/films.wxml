@@ -1,0 +1,86 @@
+<view class="wrap">
+	<view class="topbar">
+		<view class="city-entry">深圳</view>
+		<view id="switch_hot" bindtap="hotClick" class="switch-hot" data-active="{{data_active}}">
+			<navigator hover-class="none" id="hot" data-bid=".n-hot" class="hot-item {{num==1?'active':''}}" url="#">热映</navigator>
+			<navigator hover-class="none" id="cinema" data-bid=".cinema" class="hot-item {{num==2?'active':''}}" url="#">影院</navigator>
+			<navigator hover-class="none" id="coming" data-bid=".f-hot" class="hot-item {{num==3?'active':''}}" url="#">待映</navigator>
+			<navigator hover-class="none" id="classics" data-bid=".classic" class="hot-item {{num==4?'active':''}}" url="#">经典电影</navigator>
+			<!-- <view id="redhot" style="left:{{redHot}}rpx" class="redhot"></view> -->
+		</view>
+		<view class="search-entry">搜索</view>
+		<view class="bottom"></view>
+	</view>
+	<scroll-view scroll-y="ture" bindscroll="movieScroll" class="movie" id="movie" style="height:{{height+'px'}}">
+		<view class="page-wrap active" id="page-wrap">
+			<view class="top-rated-wrap">
+				<view class="top-rated">
+					<view class="title">最受好评电影</view>
+					<view scroll-x="true" class="top-rated-list">
+						<view wx:for="{{topFilms}}" wx:key="name" class="top-rated-item">
+							<navigator url="#">
+								<view class="poster">
+									<image class="pics" src="{{item.img}}"></image>
+									<view class="wish-bg"></view>
+									<view wx:if="{{item.score}}" class="score">
+										观众评分
+										<text class="rated-score">{{item.score}}</text>
+									</view>
+									<view wx:elif="{{item.wish_num}}" class="wish">
+										<text class="wish-num">{{item.wish_num}}</text>人想看
+									</view>
+								</view>
+								<view class="name line-ellipsis">{{item.name}}</view>
+							</navigator>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view id="list-wrap" class="list-wrap">
+				<view id="item{{item.id}}" wx:for="{{comings}}" class="item" wx:key="id">
+					<view class="main-block">
+						<view class="avatar">
+							<view class="default-img-bg">
+								<image src="{{item.img}}"></image>
+							</view>
+						</view>
+						<view class="mb-outline-b">
+							<view class="content">
+								<view class="movie-title">
+									<view class="title">
+										{{item.nm}}
+									</view>
+									<view class="version v2d imax"></view>
+								</view>
+								<view class="detail">
+									<view wx:if="{{item.globalReleased}}" class="score line-ellipsis">
+										<view class="score-suffix">观众评</view>
+										<view class="grade">{{item.sc}}</view>
+									</view>
+									<div wx:else class="wantsee line-ellipsis">
+						                <span class="person">{{item.wish}}</span>
+						                <span class="p-suffix">人想看</span>
+						             </div>
+									<view class="actor line-ellipsis">主演: {{item.star}}</view>
+									<view class="show-info line-ellipsis">{{item.showInfo}}</view>
+								</view>
+							</view>
+							<view class="button-block">
+								<view wx:if="{{item.globalReleased}}" class="btn">
+									<text class="fix">购票</text>
+								</view>
+								<view wx:else class="btn pre">
+									<text class="fix">预售</text>
+								</view>
+							</view>
+							<view class="line"></view>
+						</view>
+					</view>
+				</view>
+				<view wx:if="{{hasmore}}" class="loadmore loading">正在加载...</view>
+				<view wx:else class="loadmore">没有更多内容了</view>	
+			</view>
+		</view>
+	</scroll-view>
+</view>
+
